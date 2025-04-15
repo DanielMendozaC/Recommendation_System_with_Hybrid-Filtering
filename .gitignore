@@ -1,0 +1,17 @@
+# Data files
+*.json
+*.csv
+data/*.json
+data/*.csv
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Model files
+*.pkl
+models/*.pkl

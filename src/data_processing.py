@@ -28,7 +28,11 @@ def preprocess_data(df):
 
 def create_user_item_matrix(df):
     """Create user-item interaction matrix"""
-    user_item_matrix = df.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
+    # Get the mean rating for each user-item pair to handle duplicates
+    df_agg = df.groupby(['user_id', 'item_id'])['rating'].mean().reset_index()
+    
+    # Now create the pivot table
+    user_item_matrix = df_agg.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
     return user_item_matrix
 
 def create_item_features(df):
